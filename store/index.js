@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 
-export default new Vuex.Store({
+const store = () => new Vuex.Store({
 	state: {
 		token: ''
 	},
@@ -10,3 +10,5 @@ export default new Vuex.Store({
 		}
 	}
 });
+
+export default store;
