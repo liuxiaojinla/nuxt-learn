@@ -19,7 +19,8 @@ module.exports = {
 	/*
 	 ** Customize the progress-bar color
 	 */
-	loading: {color: '#fff'},
+	// loading: {color: '#fff'},
+	loading: '~components/loading.vue',
 
 	/*
 	 ** Global CSS
@@ -29,7 +30,10 @@ module.exports = {
 	/*
 	 ** Plugins to load before mounting the App
 	 */
-	plugins: ['@/plugins/iview'],
+	plugins: [
+		'@/plugins/iview',
+		'@/plugins/axios',
+	],
 
 	/*
 	 ** Nuxt.js modules
@@ -37,13 +41,26 @@ module.exports = {
 	modules: [
 		// Doc: https://axios.nuxtjs.org/usage
 		'@nuxtjs/axios',
-		'@nuxtjs/pwa'
+		'@nuxtjs/proxy',
 	],
 	/*
 	 ** Axios module configuration
 	 */
 	axios: {
 		// See https://github.com/nuxt-community/axios-module#options
+		proxy: true,
+		prefix: '/api', // baseURL
+		credentials: true,
+	},
+
+	proxy: {
+		'/api/': {
+			target: 'http://127.0.0.1:2001', // 代理地址
+			changeOrigin: true,
+			pathRewrite: {
+				'^/api': ''
+			},
+		},
 	},
 
 	/*
