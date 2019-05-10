@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import iView from 'iview'
 
-export default () => {
-	Vue.use(iView, {});
-
+//初始化UI
+function initUI() {
 	const UI = {};
 	(function($) {
 		let showLoadingCount = 0;
@@ -25,7 +24,17 @@ export default () => {
 		$.showToast = function(options) {
 			console.log('show toast', options.title);
 		};
-	})();
+	})(UI);
 
 	window.UI = UI;
+
+	console.log('init UI .')
+}
+
+export default () => {
+	Vue.use(iView, {});
+
+	if (!process.server) {
+		initUI();
+	}
 }

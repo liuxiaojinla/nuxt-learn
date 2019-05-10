@@ -1,12 +1,5 @@
-export default function(app) {
-	const axios = app.$axios;
-
-	console.log(axios);
-
-	// 基本配置
-	axios.defaults.timeout = 10000;
-	axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
+// 初始化请求器
+function initRequest() {
 	function request(options) {
 		// 处理参数
 		const method = (options.method || "GET").toLocaleUpperCase();
@@ -49,4 +42,17 @@ export default function(app) {
 	}
 
 	window.request = request;
+}
+
+export default function(app) {
+	const axios = app.$axios;
+
+	// 基本配置
+	axios.defaults.timeout = 10000;
+	axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+	if (!process.server) {
+		initRequest();
+	}
+
 }

@@ -74,7 +74,7 @@ export default {
 
 	.layout::before {
 		content: '';
-		filter: blur(100px);
+		filter: blur(10px);
 		position: absolute;
 		left: 0;
 		right: 0;

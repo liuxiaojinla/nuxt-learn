@@ -1,8 +1,11 @@
 <template>
 	<Sider class="aside-nav-right" hide-trigger width="260">
-		<div class="search-container block-bg">
+		<NLink to="/edit">发布</NLink>
+
+		<div class="search-container block-bg" style="margin-top: 15px">
 			<Input search placeholder="Enter something..."/>
 		</div>
+
 		<Card :bordered="false" dis-hover style="margin-top: 15px" class="block-bg">
 			<p slot="title">
 				<Icon type="ios-film-outline"></Icon>
